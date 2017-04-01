@@ -1,0 +1,171 @@
+#include<Servo.h>
+Servo RLB;
+Servo RLT;
+Servo LLB;
+Servo RLM;
+Servo LLM;
+Servo LLT;
+Servo RS;
+Servo RE;
+Servo RW;
+Servo LS;
+Servo LE;
+Servo LW;
+int pos, pos2;
+int i;
+
+void setup()
+{
+RLB.attach(2);
+RLT.attach(4);
+RLM.attach(3);
+RS.attach(7);
+RE.attach(6);
+RW.attach(5);
+LLB.attach(13);
+LLT.attach(11);
+LLM.attach(12);
+LS.attach(8);
+LE.attach(9);
+LW.attach(10);
+// code start initialization
+RLB.write(170);
+LLB.write(0);
+delay(5000);
+
+RLM.write(140);
+LLM.write(100);
+delay(800);
+
+RW.write(105);
+LW.write(81);
+delay(800);
+
+RLT.write(105);
+LLT.write(100);
+delay(800);
+
+RS.write(15);
+LS.write(165);                                      
+delay(800);
+
+RLB.write(10);
+LLB.write(170);
+delay(800);
+
+RLM.write(90);
+LLM.write(90);
+delay(1800);
+
+//start of transformation 
+RE.write(90);
+LE.write(90);
+delay(800);
+
+RS.write(170);
+LS.write(0);                                      
+delay(1800);
+
+
+RE.write(150);
+LE.write(150);
+delay(800);
+                               
+
+RE.write(179);
+LE.write(179);
+delay(800);
+
+RLB.write(35);
+LLB.write(120);
+delay(800);
+
+// bring legs in ready position
+for(i=0;i<=40;i++){
+
+    RS.write(170-2*i/7);
+    LS.write(0+2*i/7);                                      
+    delay(50);  
+      
+    LLT.write(100+i/2);
+    RLT.write(105+i/2);
+    delay(50);
+    
+    RLM.write(90+3/4*i);
+    LLM.write(90+3/4*i);
+    delay(50);
+    
+    RLB.write(35+4/3*i);
+    LLB.write(120-4/3*i);
+    delay(50);
+}
+//Lift from waist
+
+   RLM.write(127);
+   LLM.write(120);
+   delay(50);
+   RLB.write(100);
+   LLB.write(80);
+   delay(1000);
+//stand up part
+  RLM.write(137);
+  RLB.write(140);
+  LLB.write(60);
+  for(i=0;i<=15;i++){
+    RLT.write(125+i);
+    delay(250);
+  }
+  delay(5000);
+  RLT.write(25);
+  LLT.write(5);
+  delay(2000);
+  RS.write(65);
+  LS.write(115);
+  delay(1000);
+  for(i=0;i<40;i++){
+    
+    LLT.write(5+i*2);    
+    RLT.write(25+i*2);
+    delay(100);//RLT becomes 35
+    LLM.write(120-2.5*i);
+    LLB.write(60+i);
+    RLB.write(140-i*0.3);
+    RLM.write(137-1.5*i);
+  }
+  for(i=0;i<10;i++){
+    LLM.write(20-i/2);
+    LLB.write(100+i);
+    delay(100);
+    RLM.write(77-1.5*i);
+    RLB.write(128+i);
+    }
+ for(i=0;i<30;i++)
+  {
+    LLM.write(15-i/2.4);
+    RLB.write(138-i/2);
+    LLB.write(110-i/2);
+    delay(100);
+    RLM.write(45+i);
+  }  
+  for(i=0;i<30;i++){
+    RLM.write(75-i);
+    RLT.write(105-i/2);
+    RLB.write(123-i/3);
+  }
+  for(i=0;i<20;i++){
+    LLM.write(2.5+i/1.8);
+    RLB.write(113-i/3);
+
+    LLT.write(90+i/2);
+    LLB.write(95-i/2);
+    RLT.write(85+i/2);
+  }
+  delay(1000);
+  for(i=0;i<=20;i++){
+    RLM.write(45-i/2);
+    RLB.write(106.33-i/2);
+    LLM.write(13.61+i/2);
+    LLB.write(85-i/1.8);
+  }
+}
+void loop(){}
