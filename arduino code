@@ -1,7 +1,7 @@
 #include<Servo.h>
 Servo RLB;
 Servo RLT;
-Servo LLB;
+
 Servo RLM;
 Servo LLM;
 Servo LLT;
